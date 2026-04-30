@@ -1,0 +1,25 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  rewrites: async () => {
+    return [
+      {
+        // Proxy semua path (kecuali _next, api, favicon, index, configuration)
+        // ke GitHub raw — inilah yang membuat cdn-yudaverse.vercel.app/file.jpg bekerja
+        source: "/:filename((?!_next|api|favicon\\.ico|index|configuration).*)",
+        destination:
+          "https://raw.githubusercontent.com/nazedev350/cdn-yudaverse/main/:filename",
+      },
+    ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "raw.githubusercontent.com",
+        pathname: "/nazedev350/cdn-yudaverse/**",
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
