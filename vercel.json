@@ -1,8 +1,0 @@
-{
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "https://raw.githubusercontent.com/nazedev350/cdn-yudaverse/main/$1"
-    }
-  ]
-}
